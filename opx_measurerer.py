@@ -1,32 +1,41 @@
 import numpy as np
 
-class Optimisation_runner():
-    def __init__(self, optimiser, instruments, scorer):
-        pass
-
-
-
-
-
-
 # from config_my_pulses_FB import config
 from qm.qua import wait_for_trigger, reset_phase, program, update_frequency, for_, stream_processing, declare, declare_stream, wait, measure, play, save, fixed, demod, ramp, amp, if_, elif_, else_, align, ramp_to_zero, switch_, case_
 from qm.QuantumMachinesManager import QuantumMachinesManager
 from qualang_tools.bakery.bakery import baking
 
+
 class OPX_measurerer():
+
     def __init__(self,
-                 qm,
-                 qmm,
                  config,
+                 qmm=None,
                  dividers={'gate_36': 8.18*1e-3, 'gate_29': 8.27*1e-3}):
 
-        self.qm = qm
-        self.qmm = qmm
-        self.dividers = dividers
+        if qmm is None:
+            self.qmm = QuantumMachinesManager(host='192.168.15.128', port=80)
+        else:
+            self.qmm = qmm
 
+        self.dividers = dividers
         self.config = config
         self.CW_amp = 0.25
+
+        self.meas_I_id = self._compile_measurement_I()
+
+        self.overhauser_program = self._build_overhauser_program
+        self.overhauser_id = self._compile_overhauser_program_and_open_qm(self.overhauser_program)
+
+    def measure_I(self,):
+        job = self._start_compiled_program(self.meas_I_id)
+        results_I = self._get_I(job)
+        return results_I
+
+    def measure_overhauser_dataset(self,):
+        job = self._start_compiled_program(self.overhauser_id)
+        all_data = self._get_overhauser_dataset(job)
+        return all_data
 
     def _start_compiled_program(self, compiled_id):
         p_job = self.qm.queue.add_compiled(compiled_id)
@@ -43,6 +52,10 @@ class OPX_measurerer():
         job.result_handles.wait_for_all_values()
         all_data = {name: data.fetch_all(flat_struct=True) for name, data in job.result_handles._all_results.items()}
         return all_data
+
+    def _compile_overhauser_program_and_open_qm(self, program):
+        self.qm = self.qmm.open_qm(self.config, close_others=True)
+        return self.qm.compile(program)
 
     def _compile_measurement_I(self, readout_pulse='readout_pulse_3ms', quantum_element='bottom_right_DQD_readout'):
         with program() as measurement_program:
@@ -91,9 +104,9 @@ class OPX_measurerer():
         amp_array = [('gate_36', (det_min['gate_36']/self.CW_amp*self.dividers['gate_36'])),
                      ('gate_29', (det_min['gate_29']/self.CW_amp*self.dividers['gate_29']))]
 
-        readout_length = 4940
-        chunk_size = 76
-        slices = readout_length // chunk_size
+        # readout_length = 4940
+        # chunk_size = 76
+        # slices = readout_length // chunk_size
 
         with program() as overhauser_sequence:
             # SETTINGS OVERHAUSER
