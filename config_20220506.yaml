@@ -1,0 +1,506 @@
+#C:\Users\T7_3\miniconda3\envs\qcodes\Lib\site-packages\qcodes\instrument_drivers\QDev
+instruments:   
+    keysight_B:
+        type: qcodes.instrument_drivers.Keysight.Keysight_34465A_submodules.Keysight_34465A
+        address: TCPIP0::192.168.15.123::inst0::INSTR
+        enable_forced_reconnect: true
+    keysight_B_2:
+        type: qcodes.instrument_drivers.Keysight.Keysight_34465A_submodules.Keysight_34465A
+        address: TCPIP0::192.168.15.111::inst0::INSTR
+        enable_forced_reconnect: true                                      
+    # keithley_B:
+    #     type: qcodes.instrument_drivers.tektronix.Keithley_2600_channels.Keithley_2600 
+    #     address: TCPIP0::192.168.15.122::inst0::INSTR
+    #     enable_forced_reconnect: true
+    #     parameters:
+    #         smua.volt:
+    #             step: 0.01
+    #             inter_delay: 0.01
+    #         smub.volt:
+    #             step: 0.01
+    #             inter_delay: 0.01
+    AWG_2:
+        type: qcodes.instrument_drivers.tektronix.AWG5014.Tektronix_AWG5014
+        address: TCPIP0::192.168.15.109::inst0::INSTR
+        enable_forced_reconnect: true
+        parameters:
+            clock_freq: {monitor: true}
+            ch1_state: {monitor: true}
+            ch2_state: {monitor: true}
+            ch3_state: {monitor: true}
+            ch4_state: {monitor: true}   
+    basel_remote:
+        type: qcodes.instrument_drivers.basel.sp983c_remote.SP983A
+        address: ASRL10::INSTR
+        enable_forced_reconnect: true   
+    qdac_B:
+        type: qcodes.instrument_drivers.QDevil.QDevil_QDAC.QDac
+        address: ASRL9::INSTR
+        enable_forced_reconnect: true
+        init:
+            terminator: \n
+            update_currents: false
+        add_parameters:
+            BNC1:
+               source: ch01.v
+               label: BNC1
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC3:
+               source: ch03.v
+               label: BNC3
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC4:
+               source: ch04.v
+               label: BNC4
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC5:
+               source: ch05.v
+               label: BNC5
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC6:
+               source: ch06.v
+               label: BNC6
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true                  
+            BNC8:
+               source: ch08.v
+               label: BNC8
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true                                                                   
+            BNC9:
+               source: ch09.v
+               label: BNC9
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC10:
+               source: ch10.v
+               label: BNC10
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC11:
+               source: ch11.v
+               label: BNC11
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC12:
+               source: ch12.v
+               label: BNC12
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC13:
+               source: ch13.v
+               label: BNC13
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC14:
+               source: ch14.v
+               label: BNC14
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC15:
+               source: ch15.v
+               label: BNC15
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC17:
+               source: ch17.v
+               label: BNC17
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC18:
+               source: ch18.v
+               label: BNC18
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC19:
+               source: ch19.v
+               label: BNC19
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC20:
+               source: ch20.v
+               label: BNC20
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC21:
+               source: ch21.v
+               label: BNC21
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC23:
+               source: ch23.v
+               label: BNC23
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            BNC24:
+               source: ch24.v
+               label: BNC24
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+            bias:
+               source: ch02.v
+               label: bias qdac1
+               unit: V
+               scale: 101.5
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -0.05,0.05
+               monitor: true
+                # #BNC1: {source: ch01.v, label: BNC1, unit: V, monitor: true, scale: 1, post_delay: 0, inter_delay: 0.001, step: 1e-3, initial_value: 0}
+    qdac_B_2:
+       type: qcodes.instrument_drivers.QDevil.QDevil_QDAC.QDac
+       #type: QDac
+       address: ASRL11::INSTR
+       enable_forced_reconnect: true
+       init:
+           terminator: \n
+           update_currents: false
+       add_parameters:
+           phase_shifter:
+               source: ch07.v
+               label: phase shifter
+               unit: V
+               scale: 1
+               # delay: 0.01
+               #step: 0.0001
+               #inter_delay: 0.001
+               limits: -0.1,10.1
+               monitor: true
+           BNC25:
+               source: ch01.v
+               label: BNC25
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC26:
+               source: ch02.v
+               label: BNC26
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002   
+               limits: -2,0.2
+               monitor: true
+           BNC28:
+               source: ch04.v
+               label: BNC28
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC29:
+               source: ch05.v
+               label: BNC29
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC30:
+               source: ch06.v
+               label: BNC30
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true                 
+           BNC32:
+               source: ch08.v
+               label: BNC32
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true                                                                   
+           BNC33:
+               source: ch09.v
+               label: BNC33
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true 
+           BNC34:
+               source: ch10.v
+               label: BNC34
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC35:
+               source: ch11.v
+               label: BNC35
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC36:
+               source: ch12.v
+               label: BNC36
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC37:
+               source: ch13.v
+               label: BNC37
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC39:
+               source: ch15.v
+               label: BNC39
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC40:
+               source: ch16.v
+               label: BNC40
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC41:
+               source: ch17.v
+               label: BNC41
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC42:
+               source: ch18.v
+               label: BNC42
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC43:
+               source: ch19.v
+               label: BNC43
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC44:
+               source: ch20.v
+               label: BNC44
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC45:
+               source: ch21.v
+               label: BNC45
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC46:
+               source: ch22.v
+               label: BNC46
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           BNC48:
+               source: ch24.v
+               label: BNC48
+               unit: V
+               scale: 1
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -2,0.2
+               monitor: true
+           bias:
+               source: ch03.v
+               label: bias qdac2
+               unit: V
+               scale: 103
+               # delay: 0.01
+               step: 0.01
+               inter_delay: 0.002
+               limits: -0.05,0.05
+               monitor: true
+     
+    step_att_2:
+        type: qcodes.instrument_drivers.QDev.RCDAT_6000_60.RCDAT_6000_60
+        address: TCPIP0::192.168.15.143::23::SOCKET
+        enable_forced_reconnect: true
+        parameters:
+            attenuation: {monitor: true}  
+    magnet:
+        driver: qcodes.instrument_drivers.oxford.mercuryiPS
+        type: MercuryiPS
+        init:
+            address: 192.168.15.102
+            port: 7020
+            axes: ['X', 'Y', 'Z']
+        enable_forced_reconnect: true
+        parameters:
+            x_fld: {monitor: true}
+            x_rate: {monitor: true}
+            z_fld: {monitor: true}
+            z_rate: {monitor: true}
+            y_fld: {monitor: true}
+            y_rate: {monitor: true}
+            z_ACTN: {monitor: true}
